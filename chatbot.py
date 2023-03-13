@@ -23,6 +23,24 @@ trainer.train(
 "Helloo!",
 "Hey",
 
+"What do you do?",
+"I am made to guide and give you Information about The Admission process",
+
+"What else can you do?",
+"I can help you find colleges and help ypu filling application form",
+
+"Can you speak a different language?",
+"We are working on that 🫡",
+
+"How was you created?",
+"I was created using Python,CSS and HTML. ",
+
+"Who created you?",
+"I was created by young professionals of IT Department of DBIT. ",
+
+"Are you similar to ChatGPT?",
+"uhh Somewhat, but i might just be better suiiiiiiiiiiiiii"
+
 "How are you?",
 "I'm good.</br> <br>Go ahead and write the number of any query. 😃✨ <br> 1.list of important documents you will be needing to complete your admission process.</br>2.Frequently asked questions regarding admission </br>3.Brochure of top colleges in Mumbai</br>4.Cut-Off of Different Colleges</br>",
 
@@ -44,11 +62,6 @@ trainer.train(
 "Bye",
 "Thank You for visiting!..",
 
-"What do you do?",
-"I am made to guide and give you Information about The Admission process",
-
-"What else can you do?",
-"I can help you find colleges and help ypu filling application form",
     
     "1",
      "<b> ● Print out of counselling registration form <br> <br> ● MHT CET admit card and Result <br> ● Class 10 and 12 pass certificate and marksheet <br> ● Category certificate (if applicable) <br> ● Character and migration certificate <br> ● School leaving certificate <br> ● Domicile certificate (if applicable) </b>",
