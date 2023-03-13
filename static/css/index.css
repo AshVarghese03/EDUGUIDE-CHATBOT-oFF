@@ -93,3 +93,51 @@ h1{
 .loginbox a:hover{
     color: #ffc107;
 }
+@media screen and (max-width: 768px) {
+    .loginbox {
+        width: 90%;
+        height: auto;
+        padding: 50px 20px;
+    }
+    
+    .avatar {
+        width: 80px;
+        height: 80px;
+        top: -40px;
+    }
+    
+    h1 {
+        font-size: 20px;
+    }
+    
+    .loginbox input[type="text"], input[type="password"]{
+        height: 30px;
+        font-size: 14px;
+    }
+    
+    .loginbox input[type="submit"]{
+        height: 30px;
+        font-size: 16px;
+    }
+    
+    .loginbox a{
+        font-size: 10px;
+        line-height: 15px;
+    }
+}
+
+@media screen and (max-width: 480px){
+    .loginbox {
+        padding: 30px 10px;
+    }
+    
+    .avatar {
+        width: 60px;
+        height: 60px;
+        top: -30px;
+    }
+    
+    h1 {
+        font-size: 18px;
+    }
+}
