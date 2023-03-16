@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask,flash
 from flaskext.mysql import MySQL
 from flask import request, render_template, redirect, url_for
 from flask import session
@@ -6,15 +6,18 @@ from flask import Flask, render_template, request
 from chatterbot import ChatBot
 from chatterbot.trainers import ChatterBotCorpusTrainer,ListTrainer
 import time
-
+import nltk
 time.clock=time.time
+nltk.download('averaged_perceptron_tagger')
+
+
 
 
 app = Flask(__name__)
 app.secret_key = 'my_secret_key'
 
 app.config['MYSQL_DATABASE_USER'] = 'root'
-app.config['MYSQL_DATABASE_PASSWORD'] = 'dbit'
+app.config['MYSQL_DATABASE_PASSWORD'] = '27293003@ary'
 app.config['MYSQL_DATABASE_DB'] = 'app'
 app.config['MYSQL_DATABASE_HOST'] = 'localhost'
 
@@ -22,7 +25,7 @@ mysql = MySQL(app)
 
 @app.route('/')
 def show_login():
-    return render_template('dashboard.html')
+    return render_template('login.html')
 
 @app.route('/register')
 def show_register():
@@ -35,18 +38,27 @@ def register():
         name = request.form['name']
         username = request.form['username']
         password = request.form['password']
+
+        # Check if the username or email already exists in the database
+        cursor = mysql.get_db().cursor()
+        cursor.execute('SELECT * FROM users WHERE username = %s OR password = %s', (username, password))
+        result = cursor.fetchone()
         
         # validate the user's information
         # check if the username or email already exists in the database
-        
+        if result:
+            # If the username or email already exists, render the registration page again with an error message
+            error="Username or password already exists. Please choose an another one."
+            return render_template('register.html',error=error)
         # if the information is valid, insert the new user into the database
-        cursor = mysql.get_db().cursor()
-        cursor.execute("INSERT INTO users (name, username, password) VALUES (%s, %s, %s)", (name, username, password))
-        mysql.get_db().commit()
-        
+        else:
+         cursor = mysql.get_db().cursor()
+         cursor.execute("INSERT INTO users (name, username, password) VALUES (%s, %s, %s)", (name, username, password))
+         mysql.get_db().commit()
         return redirect(url_for('login'))
     
-    return render_template('register.html')
+    else:
+     return render_template('register.html')
 
 
 
@@ -77,15 +89,25 @@ def login():
 @app.route('/dashboard')
 def dashboard():
     if 'user' in session:
-        # display the dashboard for the logged in user
-        return render_template('dashboard.html')
+        # get the name of the logged-in user from the session
+        user = session['user']
+        name = user[1]  # assuming name is the second column in the users table
+        
+        # display the dashboard for the logged in user with their name
+        return render_template('dashboard.html', name=name)
     else:
         # redirect the user to the login page if they are not logged in
         return redirect(url_for('login.html'))
 
+
 @app.route('/chatbot')
 def chatbot():
     return render_template('chatbot.html')
+
+@app.route('/calender')
+def calender():
+    return render_template('calender.html')
+
 
 bot = ChatBot('EduGuide')
 trainer = ListTrainer(bot)
@@ -98,7 +120,12 @@ corpus_trainer.train('chatterbot.corpus.english.greetings')
 @app.route("/get")
 def get_bot_response():
     userText = request.args.get('msg')
-    return str(bot.get_response(userText))
+    bot_response = bot.get_response(userText)
+    if float(bot_response.confidence) > 0.5:
+        return str(bot_response)
+    else:
+        return "Sorry, I am not sure what you mean.Go ahead and write the number of any query. 😃✨ <br> 1.list of important documents you will be needing to complete your admission process.</br>2.Frequently asked questions regarding admission </br>3.Brochure of top colleges in Mumbai</br>4.Cut-Off of Different Colleges</br>"
+
 
 
 if __name__ == "__main__":
