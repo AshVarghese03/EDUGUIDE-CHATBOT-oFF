@@ -132,6 +132,9 @@ trainer.train(
   "Sports Scholarships?",
   "If you are a talented athlete, you may also be eligible for sports scholarships offered by colleges and universities. These scholarships are usually awarded based on your sports performance and can cover a percentage of tuition fees or the full tuition fees.</b>",
 
+  "scholarship site?",
+  " Site name is (https://mahadbt.maharashtra.gov.in/login/login) ",
+    
     "1",
      "<b> ● Print out of counselling registration form <br> <br> ● MHT CET admit card and Result <br> ● Class 10 and 12 pass certificate and marksheet <br> ● Category certificate (if applicable) <br> ● Character and migration certificate <br> ● School leaving certificate <br> ● Domicile certificate (if applicable) </b>",
     
