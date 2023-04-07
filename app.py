@@ -5,15 +5,33 @@ from flask import session
 from flask import Flask, render_template, request
 from chatterbot import ChatBot
 from chatterbot.trainers import ChatterBotCorpusTrainer,ListTrainer
+import functools
+import json
+import os
+import flask
+from authlib.integrations.requests_client import OAuth2Session
+from authlib.integrations.flask_client import OAuth
+import google.oauth2.credentials
+import googleapiclient.discovery
+import google_auth
+import google_drive
 import time
 import nltk
+from flask import Flask, request
+from twilio.twiml.messaging_response import MessagingResponse
+
 time.clock=time.time
 nltk.download('averaged_perceptron_tagger')
 
 
+app = flask.Flask(__name__)
+app.secret_key = os.environ.get("my_secret_key", default=False)
 
+app.register_blueprint(google_auth.app)
 
-app = Flask(__name__)
+app.register_blueprint(google_drive.app)
+
+# Set a secret key for the Flask application
 app.secret_key = 'my_secret_key'
 
 app.config['MYSQL_DATABASE_USER'] = 'root'
@@ -106,7 +124,13 @@ def chatbot():
 
 @app.route('/calender')
 def calender():
-    return render_template('calender.html')
+    return render_template('calendar.html')
+
+@app.route('/colleges')
+def colleges():
+    return render_template('colleges.html')
+
+
 
 
 bot = ChatBot('EduGuide')
@@ -126,7 +150,40 @@ def get_bot_response():
     else:
         return "Sorry, I am not sure what you mean.Go ahead and write the number of any query. 😃✨ <br> 1.list of important documents you will be needing to complete your admission process.</br>2.Frequently asked questions regarding admission </br>3.Scholarship related info</br>4.Top Colleges</br>"
 
+@app.route('/api')
+def api():
+    if google_auth.is_logged_in():
+        drive_fields = "files(id,name,mimeType,createdTime,modifiedTime,shared,webContentLink)"
+        items = google_drive.build_drive_api_v3().list(
+                        pageSize=20, orderBy="folder", q='trashed=false',
+                        fields=drive_fields
+                    ).execute()
+
+        return flask.render_template('list.html', files=items['files'], user_info=google_auth.get_user_info())
+
+    else:
+        return flask.render_template('login1.html', login_url='/google/login')
 
 
-if __name__ == "__main__":
+
+
+if __name__ == '__main__':
+    app.run(debug=True, host='localhost', port=5000)
+
+@app.route('/bot', methods=['POST'])
+def bot():
+    incoming_msg = request.values.get('Body', '').lower()
+    resp = MessagingResponse()
+
+    if 'link' in incoming_msg:
+        resp.message("Here is a link to the website: <a href='https://www.example.com'>https://www.example.com</a>")
+    else:
+        resp.message("I didn't understand your message. Please try again.")
+
+    return str(resp)
+
+if __name__ == '__main__':
     app.run()
+
+
+

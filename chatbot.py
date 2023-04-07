@@ -132,8 +132,8 @@ trainer.train(
   "Sports Scholarships?",
   "If you are a talented athlete, you may also be eligible for sports scholarships offered by colleges and universities. These scholarships are usually awarded based on your sports performance and can cover a percentage of tuition fees or the full tuition fees.</b>",
 
-  "scholarship site?",
-  " Site name is (https://mahadbt.maharashtra.gov.in/login/login) ",
+  "Scholarship Site?",
+  "Here is a link to the website: <a href='https://mahadbt.maharashtra.gov.in/login/login'>https://mahadbt.maharashtra.gov.in/login/login</a>",
     
     "1",
      "<b> ● Print out of counselling registration form <br> <br> ● MHT CET admit card and Result <br> ● Class 10 and 12 pass certificate and marksheet <br> ● Category certificate (if applicable) <br> ● Character and migration certificate <br> ● School leaving certificate <br> ● Domicile certificate (if applicable) </b>",
@@ -172,7 +172,7 @@ trainer.train(
     "<b>  What is the selection process after CET?:  <br> The selection process after CET involves counseling rounds based on the candidate's rank in the exam. Candidates need to register for counseling, and seats are allotted based on their preferences and availability.</b>",
     
     "3",
-    "<b > Scholarship related information <br> <br> 3.1 Government Scholarships? <br> 3.2 Private Scholarships? <br> 3.3 Merit-based Scholarships? <br> 3.4 Need-based Scholarships? <br> 3.5 Sports Scholarships? </b>",
+    "<b > Scholarship related information <br> <br> 3.1 Government Scholarships? <br> 3.2 Private Scholarships? <br> 3.3 Merit-based Scholarships? <br> 3.4 Need-based Scholarships? <br> 3.5 Sports Scholarships? <br> 3.6 Scholarship Site? </b>",
     
     "3.1",
     " <b> Government Scholarships? : <br> Government Scholarships: Various government departments offer scholarships for engineering students. These scholarships are usually based on academic performance, and other criteria such as financial need, minority status, and disability. Some popular government scholarships for engineering students in India include the INSPIRE Scholarship, Jindal Scholarship, and Sitaram Jindal Scholarship.</b>",
@@ -189,6 +189,9 @@ trainer.train(
     "3.5",
     " <b> Sports Scholarships? : <br> If you are a talented athlete, you may also be eligible for sports scholarships offered by colleges and universities. These scholarships are usually awarded based on your sports performance and can cover a percentage of tuition fees or the full tuition fees.</b>",
 
+    "3.6",
+    " <b> Here is a link to the website: <a href='https://mahadbt.maharashtra.gov.in/login/login'>https://mahadbt.maharashtra.gov.in/login/login</a> </b>",
+   
     "4",
     "<b> Top Engineering Colleges <br> <br> 4.1 Top Engineering Colleges in Maharashtra? <br> 4.2 Top Engineering Colleges in Mumbai? <br> 4.3 Top Engineering Colleges in Pune? </b> ",
     
@@ -200,7 +203,6 @@ trainer.train(
     
     "4.3",
     " <b> Here are the Top Colleges in Pune through CET EXAMINATION: <br> 1.COEP Pune <br> 2.MIT World Peace University, Pune <br> 3.MKSSS's Cummins College of Engineering for Women,Pune  <br> 4.Vishwakarma Institue of Technology, Pune  <br> 5.MIT Academy of Engineering, Pune <br> 6.MIT-WPU Faculty of Engineering,Pune <br> 7.PICT Pune <br> 8.JSPM Narhe Technical Campus,Pune <br> 9.IIT Pune <br> 10.DPCOE ,Pune </b>",
-    
     
     
     ]
@@ -224,4 +226,3 @@ def get_bot_response():
         return str(bot_response)
     else:
         return "Sorry, I am not sure what you mean.Go ahead and write the number of any query. 😃✨ <br> 1.list of important documents you will be needing to complete your admission process.</br>2.Frequently asked questions regarding admission </br>3.Scholarship related info </br> 4.Top Colleges </br>"
-
