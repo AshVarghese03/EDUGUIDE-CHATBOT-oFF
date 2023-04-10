@@ -37,16 +37,16 @@ trainer.train(
 "Hey",
 
 "How are you?",
-"I'm good.</br> <br>Go ahead and write the number of any query. 😃✨ <br> 1.list of important documents you will be needing to complete your admission process.</br>2.Frequently asked questions regarding admission </br>3.Scholarship related info</br>4.Top Colleges</br>5.Engineering Colleges as per your CET Percentile</br>",
+"I'm good.</br> <br>Go ahead and write the number of any query. 😃✨ <br> 1.list of important documents you will be needing to complete your admission process.</br>2.Frequently asked questions regarding admission </br>3.Scholarship related info</br>4.Top Colleges</br>5.Engineering Colleges as per your CET Percentile</br>6.Forms </br>",
 
 "Great",
-"I'm good.</br> <br>Go ahead and write the number of any query. 😃✨ <br> 1.list of important documents you will be needing to complete your admission process.</br>2.Frequently asked questions regarding admission </br>3.Scholarship related info</br>4.Top Colleges</br>5.Engineering Colleges as per your CET Percentile</br>",
+"I'm good.</br> <br>Go ahead and write the number of any query. 😃✨ <br> 1.list of important documents you will be needing to complete your admission process.</br>2.Frequently asked questions regarding admission </br>3.Scholarship related info</br>4.Top Colleges</br>5.Engineering Colleges as per your CET Percentile</br>6.Forms </br>",
 
 "good",
-"I'm good.</br> <br>Go ahead and write the number of any query. 😃✨ <br> 1.list of important documents you will be needing to complete your admission process.</br>2.Frequently asked questions regarding admission </br>3.Scholarship related info</br>4.Top Colleges</br>5.Engineering Colleges as per your CET Percentile</br>",
+"I'm good.</br> <br>Go ahead and write the number of any query. 😃✨ <br> 1.list of important documents you will be needing to complete your admission process.</br>2.Frequently asked questions regarding admission </br>3.Scholarship related info</br>4.Top Colleges</br>5.Engineering Colleges as per your CET Percentile</br>6.Forms </br>",
 
 "fine",
-"I'm good.</br> <br>Go ahead and write the number of any query. 😃✨ <br> 1.list of important documents you will be needing to complete your admission process.</br>2.Frequently asked questions regarding admission </br>3.Scholarship related info</br>4.Top Colleges</br>5.Engineering Colleges as per your CET Percentile</br>",
+"I'm good.</br> <br>Go ahead and write the number of any query. 😃✨ <br> 1.list of important documents you will be needing to complete your admission process.</br>2.Frequently asked questions regarding admission </br>3.Scholarship related info</br>4.Top Colleges</br>5.Engineering Colleges as per your CET Percentile</br>6.Forms </br>",
 
 "Thank You",
 "Your Welcome 😄",
@@ -292,6 +292,15 @@ trainer.train(
     "5.10",
     " <b> Percentile Between 91 to 100: <br> Congratulations on scoring more than 90 percentile in CET (Common Entrance Test) in Maharashtra! With such a high score, you have a good chance of getting admission to some of the top engineering colleges in Maharashtra. Here are some of the top engineering colleges in Maharashtra that you may consider applying to: <br>College of Engineering, Pune (COEP) <br>Veermata Jijabai Technological Institute (VJTI), Mumbai<br>Sardar Patel College of Engineering (SPCE), Mumbai<br>Institute of Chemical Technology (ICT), Mumbai<br>Maharashtra Institute of Technology (MIT), Pune<br>Vishwakarma Institute of Technology (VIT), Pune<br>KJ Somaiya College of Engineering (KJSCE), Mumbai<br>Dwarkadas J. Sanghvi College of Engineering (DJ Sanghvi), Mumbai<br>Don Bosco College, Mumbai<br>Fr. Conceicao Rodrigues College of Engineering (CRCE), Mumbai<br> <br>These colleges have a good reputation, experienced faculty, and excellent campus facilities. However, the admission process and cut-off scores may vary for each college, and it's important to check the individual college websites for more information on their admission criteria, eligibility, and cut-off scores. You should also consider factors such as location, cost, campus facilities, and placement opportunities before making your final decision. </b>",
 
+    "6",
+    " <b> Forms <br> 6.1 MHT CET Application Form <br> 6.2 CAP Registration Form <br> 6.3 Option Form <br> 6.4 Seat Acceptance Form </b>",
+
+    "6.1",
+    "<b> Application Form: The MHT CET application form is the primary form that you need to fill to apply for admission to various undergraduate engineering, pharmacy, and agricultural courses offered by colleges in Maharashtra. <br> <br> These are the steps for filling the application form: <br> <br>Step 1: Registration <br> Visit the official website of the MHT CET and click on the registration link. Fill in your basic details like name, date of birth, email ID, mobile number, etc. to register for the exam. After filling the details, click on the 'Submit' button. <br> <br> Step 2: Fill Application Form <br> After registration, login to the portal using the username and password generated at the time of registration. Fill in all the required details in the application form like personal information, academic qualification, contact details, etc. <br> <br>Step 3: Upload Documents After filling in the details, you need to upload the scanned copies of your recent passport-sized photograph and signature in the prescribed format. Also, upload your 10th and 12th mark sheet and other relevant documents. <br> <br> Step 4: Pay Application Fee After filling in all the details and uploading the documents, you need to pay the application fee. The fee can be paid online using a debit card, credit card, or net banking. Make sure to take a printout of the fee receipt for future reference. <br> <br>Step 5: Submit Application Form After paying the application fee, review all the details filled in the form and make changes if required. Once you are satisfied with the details, click on the 'Submit' button to complete the application process. <br> <br>Step 6: Download Admit Card After successfully submitting the application form, you will receive the admit card on the registered email ID. Download and take a printout of the admit card for the exam day. <br> <br> I hope these steps will help you fill the MHT CET application form. Good luck with your application and the exam! </b>",
+
+     
+    
+    
     ]
 )
 while True:
@@ -303,7 +312,7 @@ while True:
         print("Bot: ", bot_response)
     else:
         print("Bot: Sorry, I am not sure what you mean.")
-        print("Bot: Go ahead and write the number of any query. 😃✨ <br> 1.list of important documents you will be needing to complete your admission process.</br>2.Frequently asked questions regarding admission </br>3.Scholarship related info </br> 4.Top Colleges</br> </br> 5.Engineering Colleges as per your CET Percentile </br>")
+        print("Bot: Go ahead and write the number of any query. 😃✨ <br> 1.list of important documents you will be needing to complete your admission process.</br>2.Frequently asked questions regarding admission </br>3.Scholarship related info </br> 4.Top Colleges</br> </br> 5.Engineering Colleges as per your CET Percentile </br> 6.Forms </br>")
 
 @app.route("/get")
 def get_bot_response():
@@ -312,4 +321,4 @@ def get_bot_response():
     if float(bot_response.confidence) > 0.5:
         return str(bot_response)
     else:
-        return "Sorry, I am not sure what you mean.Go ahead and write the number of any query. 😃✨ <br> 1.list of important documents you will be needing to complete your admission process.</br>2.Frequently asked questions regarding admission </br>3.Scholarship related info </br> 4.Top Colleges </br>  5.Engineering Colleges as per your CET Percentile </br>"
+        return "Sorry, I am not sure what you mean.Go ahead and write the number of any query. 😃✨ <br> 1.list of important documents you will be needing to complete your admission process.</br>2.Frequently asked questions regarding admission </br>3.Scholarship related info </br> 4.Top Colleges </br>  5.Engineering Colleges as per your CET Percentile </br> 6.Forms </br>"
