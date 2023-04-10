@@ -148,7 +148,7 @@ def get_bot_response():
     if float(bot_response.confidence) > 0.5:
         return str(bot_response)
     else:
-        return "Sorry, I am not sure what you mean.Go ahead and write the number of any query. 😃✨ <br> 1.list of important documents you will be needing to complete your admission process.</br>2.Frequently asked questions regarding admission </br>3.Scholarship related info</br>4.Top Colleges</br>"
+        return "Sorry, I am not sure what you mean.Go ahead and write the number of any query. 😃✨ <br> 1.list of important documents you will be needing to complete your admission process.</br>2.Frequently asked questions regarding admission </br>3.Scholarship related info </br> 4.Top Colleges </br>  5.Engineering Colleges as per your CET Percentile </br>"
 
 @app.route('/api')
 def api():
