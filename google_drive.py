@@ -15,8 +15,8 @@ def build_drive_api_v3():
     credentials = build_credentials()
     return googleapiclient.discovery.build('drive', 'v3', credentials=credentials).files()
 
-@app.route('/login')
-def login():
+@app.route('/login1')
+def login1():
     credentials = build_credentials()  # replace with your function to get user credentials
     drive_api = build_drive_api_v3(credentials)
     files = []

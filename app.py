@@ -17,6 +17,7 @@ import google_auth
 import google_drive
 import time
 import nltk
+import re
 from flask import Flask, request
 from twilio.twiml.messaging_response import MessagingResponse
 
@@ -66,17 +67,21 @@ def register():
         # check if the username or email already exists in the database
         if result:
             # If the username or email already exists, render the registration page again with an error message
-            error="Username or password already exists. Please choose an another one."
+            error="Username or password already exists. Please choose another one."
+            return render_template('register.html',error=error)
+        # check if name field is not empty and contains only alphabets
+        elif not name or not name.isalpha():
+            error="Please enter a valid name containing only alphabets"
             return render_template('register.html',error=error)
         # if the information is valid, insert the new user into the database
         else:
-         cursor = mysql.get_db().cursor()
-         cursor.execute("INSERT INTO users (name, username, password) VALUES (%s, %s, %s)", (name, username, password))
-         mysql.get_db().commit()
-        return redirect(url_for('login'))
+            cursor = mysql.get_db().cursor()
+            cursor.execute("INSERT INTO users (name, username, password) VALUES (%s, %s, %s)", (name, username, password))
+            mysql.get_db().commit()
+            return redirect(url_for('login'))
     
     else:
-     return render_template('register.html')
+        return render_template('register.html')
 
 
 
@@ -85,12 +90,23 @@ def login():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
-        
+
+        # validate the input fields
+        if not username:
+            error = 'Username field is required.'
+            return render_template('login.html', error=error)
+        if not password:
+            error = 'Password field is required.'
+            return render_template('login.html', error=error)
+        if not re.match(r'^[\w.@+-]+$', username):
+            error = 'Username contains invalid characters.'
+            return render_template('login.html', error=error)
+
         # check if the username and password match any entries in the database
         cursor = mysql.get_db().cursor()
         cursor.execute("SELECT * FROM users WHERE username = %s AND password = %s", (username, password))
         user = cursor.fetchone()
-        
+
         if user:
             # store the user's information in a session variable
             session['user'] = user
@@ -99,9 +115,8 @@ def login():
             # display an error message if the login information is invalid
             error = 'Invalid login credentials'
             return render_template('login.html', error=error)
-    
-    return render_template('login.html')
 
+    return render_template('login.html')
 
 
 @app.route('/dashboard')
@@ -148,7 +163,7 @@ def get_bot_response():
     if float(bot_response.confidence) > 0.5:
         return str(bot_response)
     else:
-        return "Sorry, I am not sure what you mean.Go ahead and write the number of any query. 😃✨ <br> 1.list of important documents you will be needing to complete your admission process.</br>2.Frequently asked questions regarding admission </br>3.Scholarship related info </br> 4.Top Colleges </br>  5.Engineering Colleges as per your CET Percentile </br> 6.Forms </br>"
+        return "Sorry, I am not sure what you mean.Go ahead and write the number of any query. 😃✨ <br> 1.list of important documents you will be needing to complete your admission process.</br>2.Frequently asked questions regarding admission </br>3.Scholarship related info </br> 4.Top Colleges </br>  5.Engineering Colleges as per your CET Percentile </br> 6.Forms </br> 0. Press 0 for the main Query </br>"
 
 @app.route('/api')
 def api():

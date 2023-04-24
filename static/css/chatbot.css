@@ -7,13 +7,13 @@ body {
 
 /* Style the chatbox container */
 #chatbox {
-  height: 800px; /* Increase height */
+  height: 500; /* Increase height */
   width: 700px;
   margin: 0 auto; /* Center horizontally */
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  background-color: #f8f8f8;
+  background-color: #000000;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
   overflow-y: scroll; /* Add scrollbar */
 }
